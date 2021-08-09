@@ -19,6 +19,8 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 
 gem 'devise', '~> 4.7', '>= 4.7.3'
+# 縮圖套件
+gem 'mini_magick', '~> 4.11'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
