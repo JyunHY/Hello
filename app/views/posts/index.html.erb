@@ -1,0 +1,25 @@
+<div class="column">
+  <h1>我的貼文</h1>
+</div>
+
+
+<div class="container">
+  <% @posts.each do |post| %>
+    <%= link_to edit_post_path(post), class: 'has-text-grey-darker' do %>
+      <h3 class="title">
+        <%= post.title %>
+        <% if post.published? %>
+          <%= content_tag :span, '公開', class: 'tag is-primary'%>
+        <% else %>
+          <%= content_tag :span, '私人', class: 'tag is-link'%>
+        <% end %>
+      </h3>
+      <p>發文群組:<%= post.group %></p>
+      <p><%= strip_tags(post.content).truncate(200) %></p>
+    <% end %>
+      <p>
+        最後編輯時間：<%= time_ago_in_words(post.updated_at) %>
+      </p>
+      </hr>
+  <% end %>
+</div>

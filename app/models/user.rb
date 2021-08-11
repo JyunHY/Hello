@@ -9,4 +9,6 @@ class User < ApplicationRecord
 
   # 每個人可以都有一個avatar
   has_one_attached :avatar
+  #一個使用者可以有多個post
+  has_many:posts
 end

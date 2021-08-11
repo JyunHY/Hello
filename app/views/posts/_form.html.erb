@@ -1,0 +1,28 @@
+<%= form_for(post) do |form| %>
+  <div class="field">
+    <%= form.label :group, '群組' %>
+    <%= form.collection_select :group, @groups, :name, :name, include_blank: true %>
+  </div>
+
+  <div class="field">
+    <%= image_tag post.cover_image.variant(resize: '500x400'), class: 'cover-image' if post.cover_image.attached? %>
+    <%= form.label :cover_image, '封面圖' %>
+    <%= form.file_field :cover_image %>
+  </div>
+
+  <div class="field">
+    <%= form.label :title, '標題' %>
+    <%= form.text_field :title, class: 'input is-primary is-medium' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content, '內容' %>
+    <%= form.text_area :content, rows: 10, class: 'textarea is-primary is-medium' %>
+  </div>
+
+  <div class="field">
+    <%= form.submit '儲存', name:"draft", class:"button is-info" %>
+    <%= form.submit '發佈', name: 'publish', class: 'button is-primary' if post.may_publish? %>
+    <%= form.submit '下架', name: 'unpublish', class: 'button  is-danger' if post.may_unpublish? %>
+  </div>
+<% end %>

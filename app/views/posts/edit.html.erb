@@ -1,0 +1,12 @@
+<div class="column">
+  <h1 class="title">編輯貼文</h1>
+  <%= link_to "刪除", @post, method: 'delete', class: 'button is-danger is-small', data: { confirm: '確認刪除?!'} %>
+</div>
+
+<section class="container">
+  <div class="columns">
+    <div class="column is-6">
+    <%= render 'form', post: @post %>
+    </div>
+  </div>
+</section>

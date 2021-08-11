@@ -1,0 +1,17 @@
+<div class="column">
+  <h1>所有群組</h1>
+</div>
+
+
+<div class="container">
+  <% @groups.each do |group| %>
+    <h3 class="title">
+      <%= group.name %>
+    </h3>
+    <%= link_to "刪除", group, method: 'delete', class: 'button is-danger is-small', data: { confirm: '確認刪除?!'} %>
+    <p>
+      最後編輯時間：<%= time_ago_in_words(group.updated_at) %>
+    </p>
+    </hr>
+  <% end %>
+</div>

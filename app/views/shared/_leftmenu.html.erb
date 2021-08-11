@@ -1,0 +1,11 @@
+<aside class="menu">
+  <p class="menu-label">
+    群組
+  </p>
+  <% @groups.each do |group| %>
+    <ul class="menu-list">
+    <li><a><%= group.name %></a></li>
+    </ul>
+  <% end %>
+</aside>
+

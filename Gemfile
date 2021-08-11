@@ -21,6 +21,14 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise', '~> 4.7', '>= 4.7.3'
 # 縮圖套件
 gem 'mini_magick', '~> 4.11'
+# 修改網址套件
+gem 'friendly_id', '~> 5.4', '>= 5.4.2'
+# 解決中文產生的亂碼
+gem 'babosa', '~> 2.0'
+# 狀態控制
+gem 'aasm', '~> 5.2'
+
+
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

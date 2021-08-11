@@ -1,0 +1,15 @@
+<section class="container">
+  <div class="columns">
+    <div class="column is-6">
+      <%= form_for(@group) do |form| %>
+        <div class="field">
+          <%= form.label :name, '新增群組' %>
+          <%= form.text_field :name, class: 'input is-primary is-medium' %>
+        </div>
+        <div class="field">
+        <%= form.submit '送出', class: 'button is-medium is-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
