@@ -1,7 +1,10 @@
 class Post < ApplicationRecord
   belongs_to :user
   has_one_attached :cover_image
-
+  has_many :comments
+  
+  # 啟動paranoid
+  acts_as_paranoid
   # 狀態控制AASM
   include AASM
   # 修改網址

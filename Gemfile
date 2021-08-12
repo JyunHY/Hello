@@ -18,6 +18,7 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 
+# 會員系統
 gem 'devise', '~> 4.7', '>= 4.7.3'
 # 縮圖套件
 gem 'mini_magick', '~> 4.11'
@@ -27,6 +28,8 @@ gem 'friendly_id', '~> 5.4', '>= 5.4.2'
 gem 'babosa', '~> 2.0'
 # 狀態控制
 gem 'aasm', '~> 5.2'
+# 軟刪除
+gem 'paranoia', '~> 2.4', '>= 2.4.3'
 
 
 # Use Active Model has_secure_password

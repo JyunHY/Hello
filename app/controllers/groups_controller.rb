@@ -3,13 +3,20 @@ class GroupsController < ApplicationController
   before_action :authenticate_user!
 
   before_action :find_group, only: [:destroy]
-
+  before_action :find_all_group, only: [:index, :show]
   def index
-    @groups = Group.all.order(created_at: :desc)
+    # @groups = Group.all
+    # render json: params
   end
 
   def new
     @group = Group.new
+  end 
+
+  def show
+    # render json: params
+    @posts = Post.published.where(group: params[:group]).order(created_at: :desc).includes(:user)
+    # render json: Post.published.where(group: params[:group]).order(created_at: :desc).includes(:user)
   end 
 
   def create
@@ -35,5 +42,9 @@ class GroupsController < ApplicationController
 
   def find_group
     @group = Group.find(params[:id])
+  end
+
+  def find_all_group
+    @groups = Group.all
   end
 end

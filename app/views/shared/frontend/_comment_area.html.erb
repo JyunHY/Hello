@@ -1,0 +1,6 @@
+<% if user_signed_in? %>
+  <%= form_with model: comment, url: post_comments_path(post), class: 'comment_form', remote: true do |form| %>
+    <%= form.text_area :content, rows: 2, class: "textarea is-small" %>
+    <%= form.button '送出', class: "button is-dark" %>
+  <% end %>
+<% end %>
