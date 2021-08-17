@@ -1,9 +1,9 @@
 class GroupsController < ApplicationController
   #進入必須是登入狀態
   before_action :authenticate_user!
-
   before_action :find_group, only: [:destroy]
   before_action :find_all_group, only: [:index, :show]
+  
   def index
     # @groups = Group.all
     # render json: params

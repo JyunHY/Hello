@@ -6,9 +6,9 @@ class CommentsController < ApplicationController
     @comment = @post.comments.new(comment_params)
     @comment.user = current_user
 
-    # if @comment.save
-    #   render js: "alert('留言成功')"
-    # end
+    unless @comment.save
+      render js: "alert('留言失敗, 內容不可空白')"
+    end
   end
 
 

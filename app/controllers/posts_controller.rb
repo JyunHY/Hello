@@ -1,8 +1,9 @@
 class PostsController < ApplicationController
   #進入必須是登入狀態
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:like]
   #進入edit update destroy時 先使用find_post方法
-  before_action :find_post, only: [:edit, :update, :destroy]
+  before_action :find_post, only: [:edit, :update, :destroy, :like]
+  skip_before_action :verify_authenticity_token, only: [:like]
 
   
 
@@ -59,6 +60,20 @@ class PostsController < ApplicationController
     @groups = Group.all
   end
 
+
+  def like 
+    # render json: params
+    if user_signed_in?
+      post = Post.friendly.find(params[:id])
+      # user = current_user
+      # render json: like
+      # post.update!(:like => liker)
+      render json: {status: current_user.like!(post)}
+      # render json: @relikes
+    else
+      render json: {status: 'sign_in_first'}
+    end
+  end
 
   private
   #接收資料

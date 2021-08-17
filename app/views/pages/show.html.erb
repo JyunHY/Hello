@@ -25,6 +25,19 @@
           <div class="content">
             <p class="txet-center"><%= @post.content %></p>
           </div>
+          <footer data-controller="post">
+          <%= link_to "#", id:"like", class: 'like', data: { action: 'post#like', slug: @post.slug }, "@click": "addLike" do %>
+            <% if user_signed_in? && current_user.like?(@post) %>
+              <i v-bind:class="iconrelike"></i>
+            <% else %>
+              <i v-bind:class="iconlike"></i>
+            <% end %>
+            <span class="relikes">
+            <%= @relikes %>
+            </span>
+          <% end %>
+          </footer>
+          
           <footer class="card-footer">
             <p class="card-footer-item">留言</p>   
           </footer>
@@ -38,4 +51,11 @@
       </div>
     </div>
   </div>
+
+  <div id="like" @click="addLike">
+    <div class="button is-info "id="likeButton">
+      <p>{{ message }}</p>
+    </div>
+  </div>
+
 </section>

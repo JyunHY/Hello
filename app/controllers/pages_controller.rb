@@ -16,6 +16,7 @@ class PagesController < ApplicationController
 
   def find_post
     @post =Post.friendly.find(params[:post_id])
+    @relikes = Like.where( :liked => @post).count
   end
 
   def find_group

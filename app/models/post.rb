@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_one_attached :cover_image
   has_many :comments
+  has_many :likes
   
   # 啟動paranoid
   acts_as_paranoid
@@ -33,6 +34,21 @@ class Post < ApplicationRecord
   def normalize_friendly_id(input)
     input.to_s.to_slug.normalize(transliterations: :russian).to_s
   end
+
+
+  # def like?(user)
+  #   likes.exists?(post_id: user)
+  # end
+
+  # def like!(user)
+  #   if like?(user)
+  #     likes.find_by(post_id: user).destroy
+  #     return 'Follow'
+  #   else
+  #     likes.create(post_id: user)
+  #     return 'Followed'
+  #   end
+  # end
 
   private
   def slug_candidate
