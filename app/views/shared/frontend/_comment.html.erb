@@ -11,8 +11,15 @@
     </div>
   </div>
   <footer class="card-footer">
-    <span class="icon is-small card-footer-item-left">
-      <i class="fas fa-heart" aria-hidden="true"></i>
-    </span>
+    <%= link_to "#", id: "", class: "has-text-danger", data: { post:comment.post_id, slug: comment.id }, "@click": "addComLike" do %>
+      <% if user_signed_in? && current_user.comlike?(comment) %>
+        <i class="fas fa-heart like<%= comment.id%>" ></i>
+      <% else %>
+        <i class="far fa-heart like<%= comment.id%>" ></i>
+      <% end %>
+      <span class="recomlikes like<%= comment.id%> has-text-dark">
+        <%= Commentlike.where( :comliked => comment).count %>
+      </span>
+    <% end %>
   </footer>
 </div>

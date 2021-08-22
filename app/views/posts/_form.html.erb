@@ -17,7 +17,7 @@
 
   <div class="field">
     <%= form.label :content, '內容' %>
-    <%= form.text_area :content, rows: 10, class: 'textarea is-primary is-medium' %>
+    <%= form.text_area :content, rows: 20, class: 'textarea is-primary is-medium ' %>
   </div>
 
   <div class="field">
@@ -26,3 +26,5 @@
     <%= form.submit '下架', name: 'unpublish', class: 'button  is-danger' if post.may_unpublish? %>
   </div>
 <% end %>
+
+

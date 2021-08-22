@@ -1,3 +1,16 @@
+import FroalaEditor from 'froala-editor'
+import 'froala-editor/js/languages/zh_tw.js'
+import 'froala-editor/js/plugins/table.min.js'
+import 'froala-editor/js/plugins/colors.min.js'
+import 'froala-editor/js/plugins/draggable.min.js'
+import 'froala-editor/js/plugins/font_size.min.js'
+import 'froala-editor/js/plugins/fullscreen.min.js'
+import 'froala-editor/js/plugins/image.min.js'
+import 'froala-editor/js/plugins/link.min.js'
+import 'froala-editor/js/plugins/lists.min.js'
+import 'froala-editor/js/plugins/quote.min.js'
+import 'froala-editor/js/plugins/video.min.js'
+
 document.addEventListener('turbolinks:load', () => {
     (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
       $notification = $delete.parentNode;
@@ -6,3 +19,15 @@ document.addEventListener('turbolinks:load', () => {
       });
     });
 });
+
+
+
+document.addEventListener('turbolinks:load', function(event){
+  let editor = new FroalaEditor('#post_content', {
+    //繁中
+    language: 'zh_tw', 
+    //拼字檢查
+    spellcheck: false, 
+    imageUploadURL: '/api/upload_image'
+  })
+})

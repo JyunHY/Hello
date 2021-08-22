@@ -11,7 +11,8 @@
       <div class="navbar-item">
         <div class="buttons">
           <% if user_signed_in? %>
-            <%= link_to new_post_path,class:"navbar-item" do %>
+            <i class="far fa-envelope"></i>
+            <%= link_to new_post_path, class:"navbar-item" do %>
               <i class="fas fa-edit"></i>
             <% end %>
             <div class="navbar-item has-dropdown is-hoverable">

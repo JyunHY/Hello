@@ -19,21 +19,30 @@
             </div>
             <div class="media-content">
               <p class="title is-4"><%= @post.title %></p>
-              <p class="subtitle is-6">@<%= @post.user.username %></p>
+              <div class="subtitle is-6">
+              <span>@<%= @post.user.username %></span>
+              <%= link_to "#", id: "subscribe", class: "subscribe has-text-link", data: { user: @post.user.id }, "@click": "addSubscribe" do %>
+                <% if user_signed_in? && current_user.subscribe?(@post.user) %>
+                  <i class="fas fa-bell subscribe"></i>
+                <% else %>
+                  <i class="far fa-bell subscribe"></i>
+                <% end %>
+              <% end %>
+              </div>
             </div>
           </div>
           <div class="content">
-            <p class="txet-center"><%= @post.content %></p>
+            <p class="txet-center"><%= @post.content.html_safe %></p>
           </div>
           <footer data-controller="post">
-          <%= link_to "#", id:"like", class: 'like', data: { action: 'post#like', slug: @post.slug }, "@click": "addLike" do %>
+          <%= link_to "#", id: "like", class: "like has-text-danger", data: { slug: @post.slug }, "@click": "addLike" do %>
             <% if user_signed_in? && current_user.like?(@post) %>
               <i v-bind:class="iconrelike"></i>
             <% else %>
               <i v-bind:class="iconlike"></i>
             <% end %>
-            <span class="relikes">
-            <%= @relikes %>
+            <span class="relikes has-text-dark">
+              <%= @relikes %>
             </span>
           <% end %>
           </footer>
@@ -46,16 +55,9 @@
           </footer>
         </div>
       </div>
-      <div class="comment-list">
+      <div class="comment-list comlike">
         <%= render partial: 'shared/frontend/comment', collection: @comments %>
       </div>
     </div>
   </div>
-
-  <div id="like" @click="addLike">
-    <div class="button is-info "id="likeButton">
-      <p>{{ message }}</p>
-    </div>
-  </div>
-
 </section>

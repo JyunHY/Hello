@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_post, only: [:create]
 
+
   def create
     @comment = @post.comments.new(comment_params)
     @comment.user = current_user

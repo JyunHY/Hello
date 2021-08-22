@@ -20,6 +20,7 @@
     "@babel/core": "^7.15.0",
     "@babel/preset-env": "^7.15.0",
     "babel-loader": "^8.2.2",
+    "froala-editor": "^4.0.4",
     "webpack": "^4.32.2",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.11.0"

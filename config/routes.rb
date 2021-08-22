@@ -3,14 +3,33 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
+  namespace :api do
+    post :upload_image, to: 'utils#upload_image'
+
+    resources :users, only: [] do
+      member do
+        post :subscribe
+      end
+    end
+
+    resources :posts do
+      member do
+        post :like
+      end
+      resources :comments , only:[:create] do
+        member do
+          post :comlike
+        end
+      end
+    end
+  end
   resources :groups
 
   resources :posts do
-    member do
-      post :like
-    end
     resources :comments , only:[:create]
   end
+
+  
 
   get '@:username/:post_id', to: 'pages#show', as: 'post_page'
   get '@:username', to: 'pages#user', as: 'user_page'

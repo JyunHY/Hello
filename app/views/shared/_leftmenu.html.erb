@@ -1,10 +1,10 @@
 <aside class="menu">
-  <p class="menu-label">
+  <p class="menu-label title is-6">
     群組
   </p>
   <ul class="menu-list">  
   <% @groups.each do |group| %>
-    <%= link_to group_page_path(group.name), class: 'has-text-dark' do %>  
+    <%= link_to group_page_path(group.name), class: 'has-text-dark title is-4' do %>  
       <li><%= group.name %></li>
     <% end %>
   <% end %>
