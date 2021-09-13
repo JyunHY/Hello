@@ -23,7 +23,10 @@ document.addEventListener('turbolinks:load', function(event) {
         let p = parseInt(recomlikes.innerHTML)
         // console.log(icon)
         //  /posts/:post_id/comments/:id/comlike
-        axios.post(`/api/posts/${postid}/comments/${slug}/comlike`)
+        axios.post(`/api
+        
+        
+        /posts/${postid}/comments/${slug}/comlike`)
           .then((response) => {
           let status = response.data.status
           // console.log(status)

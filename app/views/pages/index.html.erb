@@ -4,7 +4,7 @@
       <%= render 'shared/leftmenu' %>
     </div>
     <div class="column is-7">
-      <%= render 'shared/post' %>
+      <%= render partial:'shared/post' , collection: @posts %>
     </div>
   </div>
 </section>

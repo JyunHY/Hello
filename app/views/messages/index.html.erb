@@ -1,0 +1,16 @@
+
+<section class="container">
+  <div class="columns">
+    <div class="column is-2" style="background-color:gray;">
+      <%= render 'shared/messagemenu' , users: @users %>
+    </div>
+    <div class="column is-7">
+      <% @messages.each do |message| %>
+        <div class="pagination-list">
+        <%= avatar(message.user, size: 50) %>
+        <p><%= message.content %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

@@ -7,6 +7,9 @@ class User < ApplicationRecord
   # 資料驗證validations
   validates :username, presence: true, uniqueness: true
 
+  # extend FriendlyId
+  # friendly_id :username, use: :slugged
+
   # 每個人可以都有一個avatar
   has_one_attached :avatar
   #一個使用者可以有多個post
@@ -14,6 +17,7 @@ class User < ApplicationRecord
   has_many :likes
   has_many :commentlikes
   has_many :subscribes
+  has_many :messages
 
   # 貼文喜歡
   def like?(post)

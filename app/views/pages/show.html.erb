@@ -20,13 +20,17 @@
             <div class="media-content">
               <p class="title is-4"><%= @post.title %></p>
               <div class="subtitle is-6">
-              <span>@<%= @post.user.username %></span>
+              <%= link_to user_page_path(), class: "user has-text-dark" do%>
+                <span>@<%= @post.user.username %></span>
+              <% end %>
+              <% unless current_user == @post.user %>
               <%= link_to "#", id: "subscribe", class: "subscribe has-text-link", data: { user: @post.user.id }, "@click": "addSubscribe" do %>
                 <% if user_signed_in? && current_user.subscribe?(@post.user) %>
                   <i class="fas fa-bell subscribe"></i>
                 <% else %>
                   <i class="far fa-bell subscribe"></i>
                 <% end %>
+              <% end %>
               <% end %>
               </div>
             </div>

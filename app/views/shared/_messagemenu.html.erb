@@ -1,0 +1,15 @@
+<aside class="menu">
+  <p class="menu-label title is-6">
+    訊息
+  </p>
+  <% users.each do |user| %>
+    <%= link_to user_message_path(current_user, user.user), class: 'has-text-dark title is-4' do %> 
+    <ul class="menu-list">
+      <li class="pagination-list">
+      <%= avatar(user.user, size: 50) %>
+      <p class="title is-6"><%= user.user.username %></p>
+      </li>
+    </ul>
+    <% end %>
+  <% end %>
+</aside>

@@ -1,34 +1,32 @@
-<% @posts.each do |post| %>
-  <%= link_to post_page_path(post.user.username, post), class: 'has-text-dark' do %>
-    <div class="box is-size-5" style="height: 230px;">
-      <article class="media">
-        <div class="media-left">
-          <figure class="image is-64x64">
-            <%= image_tag post.cover_image if post.cover_image.attached? %>
-          </figure>
+<%= link_to post_page_path(post.user.username, post), class: 'has-text-dark' do %>
+  <div class="box is-size-5" style="height: 230px;">
+    <article class="media">
+      <div class="media-left">
+        <figure class="image is-64x64">
+          <%= image_tag post.cover_image if post.cover_image.attached? %>
+        </figure>
+      </div>
+      <div class="media-content">
+        <div class="content">
+          <p>
+            <strong><%= post.title %></strong> <small><%= post.user.username %></small> <small><%= time_ago_in_words(post.created_at) %></small>
+            <br>
+            <%= strip_tags(post.content).truncate(100) %>
+          </p>
         </div>
-        <div class="media-content">
-          <div class="content">
-            <p>
-              <strong><%= post.title %></strong> <small><%= post.user.username %></small> <small><%= time_ago_in_words(post.created_at) %></small>
-              <br>
-              <%= strip_tags(post.content).truncate(100) %>
-            </p>
-          </div>
-          <nav class="level is-mobile">
-            <div class="level-left">
-              <div class="level-item">
-                <i class="far fa-comment-dots"></i>
-                <span class=""><%=Comment.where( :post_id => post).count %></span>
-              </div>
-              <div class="level-item">
-                <i class="fas fa-heart has-text-danger"></i>
-                <span class=""><%= Like.where( :liked => post).count %></span>
-              </div>
+        <nav class="level is-mobile">
+          <div class="level-left">
+            <div class="level-item">
+              <i class="far fa-comment-dots"></i>
+              <span class=""><%=Comment.where( :post_id => post).count %></span>
             </div>
-          </nav>
-        </div>
-      </article>
-    </div>
-  <% end %>
+            <div class="level-item">
+              <i class="fas fa-heart has-text-danger"></i>
+              <span class=""><%= Like.where( :liked => post).count %></span>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </article>
+  </div>
 <% end %>

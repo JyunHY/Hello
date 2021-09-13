@@ -1,0 +1,39 @@
+<section class="container">
+  <div class="column">
+    <div class="box">
+      <article class="media">
+        <div class="media-left">
+          <figure class="image is-64x64">
+            <%= image_tag @user.avatar.variant(resize: "50X50!") if @user.avatar.attached? %>
+          </figure>
+        </div>
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <strong><%= @user.username %></strong>
+              <% unless current_user==@user %>
+              <%= link_to "#", id: "subscribe", class: "subscribe has-text-link", data: { user: @user.id }, "@click": "addSubscribe" do %>
+                <% if user_signed_in? && current_user.subscribe?(@user) %>
+                  <i class="fas fa-bell subscribe"></i>
+                <% else %>
+                  <i class="far fa-bell subscribe"></i>
+                <% end %>
+              <% end %>
+              <%= link_to new_user_message_path(@user), id: "message", class: "message has-text-info" do %>
+                <i class="far fa-envelope"></i>
+              <% end %>
+              <% end %>
+              <br>
+              個人簡介:
+            </p>
+            <p><%= @user.intro %></p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+  <div class = "column">
+    <p class = "title is-4">貼文:</p>
+    <%= render partial:'shared/post', collection: @userposts %>
+  </div>
+</section>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # mount ActionCable.server => '/cable'
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
       member do
         post :like
       end
-      resources :comments , only:[:create] do
+      resources :comments do
         member do
           post :comlike
         end
@@ -27,6 +28,10 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :comments , only:[:create]
+  end
+
+  resources :users do
+    resources :messages , only:[:new, :show, :index, :create]
   end
 
   

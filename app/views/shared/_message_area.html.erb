@@ -1,0 +1,10 @@
+<%= form_with model: message, url: user_messages_path(user), class: 'message_form', remote: true do |form| %>
+  <p>to : <%= user.username %></p>
+  <%= form.text_field :foruser, value: user.id , type: "hidden"%>
+  <%= form.text_field :talkroom, value: talkroom , type: "hidden"%>
+  <div class="field">
+    <% form.label :content %>
+    <%= form.text_area :content, rows: 3, class: 'textarea is-primary is-medium ' %>
+  </div>
+  <%= form.button '送出', class: "button is-dark navbar-end" %>
+<% end %>

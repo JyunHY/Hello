@@ -1,0 +1,22 @@
+<section class="container">
+  <div id="user-id" data-user-id="<%= current_user.id %>"></div>
+  <div class="columns">
+    <div class="column is-2" style="background-color:gray;">
+      <%= render 'shared/messagemenu' , users: @users %>
+    </div>
+    <div class="column is-7" id="room-id" data-room-id="<%= @talkroom %>">
+      <div class="chat-room" id='messageBody'>
+      <% @messages.each do |message| %>
+        <% if message.user == current_user %>
+          <%= render 'mymessage', message: message %>
+        <% else %>
+          <%= render 'message', message: message %>
+        <% end %>
+      <% end %>
+      </div>
+      <div class="">
+        <%= render 'shared/message_area', message: @message, user: @user, talkroom: @talkroom %>
+      </div>
+    </div>
+  </div>
+</section>

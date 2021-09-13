@@ -55,7 +55,7 @@ class PostsController < ApplicationController
     redirect_to posts_path, notice: '貼文已刪除'
   end
 
-  def edit 
+  def edit
     @groups = Group.all
   end
 

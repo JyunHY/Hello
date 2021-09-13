@@ -18,6 +18,8 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 
+gem 'redis', '~> 3.3', '>= 3.3.1'
+
 # 會員系統
 gem 'devise', '~> 4.7', '>= 4.7.3'
 # 縮圖套件

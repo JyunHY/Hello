@@ -1,0 +1,32 @@
+<section class="container">
+  <div class="column">
+    <article class="media">
+      <div class="media-left">
+        <figure class="image is-64x64">
+          <%= avatar(@user, size: 64) %>
+        </figure>
+      </div>
+      <div class="media-content">
+        <div class="content">
+          <p><strong><%= @user.username %></strong></p>
+        </div>
+      </div>
+    </article>
+  </div>
+  <div class:"card-content">
+    <%= render 'shared/message_area', message: @message, user: @user, talkroom: @talkroom %>
+  </div>
+  <% @messages.each do |message| %>
+  <div>
+    <div class="card-header">
+      <%= avatar(message.user, size: 50) %>
+      <p class="card-header-title">
+        <%= message.user.username %>
+      </p>
+    </div>
+    <div class="card-content">
+    <%= message.content %>
+    </div>
+  </div>
+  <% end %>
+</section>

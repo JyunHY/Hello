@@ -11,7 +11,9 @@
       <div class="navbar-item">
         <div class="buttons">
           <% if user_signed_in? %>
-            <i class="far fa-envelope"></i>
+            <%= link_to user_messages_path(current_user), class:"navbar-item" do %>
+              <i class="far fa-envelope"></i>
+            <% end %>
             <%= link_to new_post_path, class:"navbar-item" do %>
               <i class="fas fa-edit"></i>
             <% end %>
